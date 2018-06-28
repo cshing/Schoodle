@@ -3,7 +3,7 @@
 
   <head>
     <% include ./partials/_head %>
-
+    
     <!-- App JS -->
     <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
     <script type="text/javascript" src="/scripts/create_event.js"></script>
@@ -25,7 +25,12 @@
         <input id="location" type="text" name="location" placeholder="location"> <br>
         <label> Description: </label>
         <input id="description" type="text" name="description" placeholder="description"> <br>   
-        <p> calendar jquery stuff? <p> 
+        <p id="datepair">
+          <input type="text" class="date start" />
+          <input type="text" class="time start" /> to
+          <input type="text" class="time end" />
+          <input type="text" class="date end" />
+        </p>
         <button><a href="/event/eventid">Submit</a></button>
     </form> 
        
