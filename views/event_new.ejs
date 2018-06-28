@@ -17,7 +17,17 @@
 
     <!-- Page-specific (main) content here -->
     <main class="new-event-container">
-    <p>create new event form goes here</p>
+    <p>create event</p>
+    <form class="create-event" method="POST" action="/new"> 
+        <label> Event name: </label> 
+        <input id="title" type="text" name="title" placeholder="event title"/> <br>
+        <label> Location: </label> 
+        <input id="location" type="text" name="location" placeholder="location"> <br>
+        <label> Description: </label>
+        <input id="description" type="text" name="description" placeholder="description"> <br>   
+        <p> calendar jquery stuff? <p> 
+        <button><a href="/event/eventid">Submit</a></button>
+    </form> 
        
     </main> 
 
