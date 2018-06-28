@@ -3,7 +3,7 @@
 
   <head>
     <% include ./partials/_head %>
-    
+
     <!-- App JS -->
     <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
     <script type="text/javascript" src="/scripts/create_event.js"></script>
@@ -26,10 +26,10 @@
         <label> Description: </label>
         <input id="description" type="text" name="description" placeholder="description"> <br>   
         <p id="datepair">
-          <input type="text" class="date start" />
-          <input type="text" class="time start" /> to
-          <input type="text" class="time end" />
-          <input type="text" class="date end" />
+          <input type="text" class="date start" placeholder="start date" />
+          <input type="text" class="time start" placeholder="start time" /> to
+          <input type="text" class="time end" placeholder="end time" />
+          <input type="text" class="date end" placeholder="end date" />
         </p>
         <button><a href="/event/eventid">Submit</a></button>
     </form> 
