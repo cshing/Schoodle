@@ -6,18 +6,44 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   router.post("/", (req, res) => {
-    const {title, description, location} = req.body;
+    let formData = req.body;
+    let timeSlots = [];
+    
+    // compileStartAndEndDates
+    formData.start_date.map((date, index) => {
+      let data = {
+        start_date: formData.start_date[index],
+        start_time: formData.start_time[index],
+        end_date: formData.end_date[index],
+        end_time: formData.end_time[index]
+      }
+      timeSlots.push(data);
+    })
+
     knex('events')
     .insert({
-      title: title,
-      description: description,
-      location: location,
+      title: formData.title,
+      description: formData.description,
+      location: formData.location,
       url: generateRandUrl()
     })
-    .then((data) => {
-      return res.redirect("/");
+    .returning('id')
+    .then(function(response){
+      timeSlots.map(item => {
+        knex('timeslots')
+        .insert({
+          start_date: item.start_date,
+          start_time: item.start_time,
+          end_time: item.end_time,
+          end_date: item.end_date,
+          event_id: response[0]
+        })
+        .then(() => {
+          return res.redirect("/");
+        })
+        .catch(err => res.send("Error in events.js in routes:", err))
+      })
     })
-    .catch(err => res.send("Error in events.js in routes"))
   });
 
   //Generate 10 random characters
@@ -31,5 +57,3 @@ module.exports = (knex) => {
 
   return router;
 }
-
-
