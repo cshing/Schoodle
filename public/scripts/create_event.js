@@ -22,6 +22,10 @@ $(document).ready(function(){
       </p> `;      
       $('.timeslot-container').append(result);
 
+      var counter = $('.Counter').html();
+      counter++ ;
+      $('.Counter').html(counter);
+
       $('.appendDatePair .time').timepicker({
         'showDuration': true,
         'timeFormat': 'g:ia'
