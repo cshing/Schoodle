@@ -10,7 +10,15 @@
     </header>
 
     <!-- Page-specific (main) content here -->
-    <main class="event-share-container">
+    <main class="event-share-container" name="event-share-container">
+    <p class="shareEventHeading" name="shareEventHeading"><h1>Share your event!</h1></p>
+
+      <form class="share-event"name="share-event" method="POST" action="/api/"> 
+        <input class="sharableLink" name="sharableLink" type="text" placeholder="&#xf1e0; http://localhost:8080/fhsw2346bm">
+        <button class="copyEventLink" name="copyEventLink" type="submit">Copy</button><br><br>
+        <button class="seeEvent" name="seeEvent" type="submit">See Event</button><br><br>
+        <button class="editEvent" name="editEvent" type="submit">Edit Event</button>
+      </form>
     </main> 
 
     <footer>
