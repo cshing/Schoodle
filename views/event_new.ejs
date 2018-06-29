@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <% include ./partials/_head %>
-
+    
     <!-- App JS -->
     <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
     <script type="text/javascript" src="/scripts/create_event.js"></script>
     
   </head>
-
   <body>
     <header>
       <% include ./partials/_header %>
     </header>
-
     <!-- Page-specific (main) content here -->
     <main class="new-event-container">
     <p>create event</p>
-    <form class="create-event" method="POST" action="/new"> 
+    <form class="create-event" method="POST" action="/api/events/"> 
         <label> Event name: </label> 
         <input id="title" type="text" name="title" placeholder="event title"/> <br>
         <label> Location: </label> 
@@ -26,16 +23,15 @@
         <label> Description: </label>
         <input id="description" type="text" name="description" placeholder="description"> <br>   
         <p id="datepair">
-          <input type="text" class="date start" placeholder="start date" />
-          <input type="text" class="time start" placeholder="start time" /> to
-          <input type="text" class="time end" placeholder="end time" />
-          <input type="text" class="date end" placeholder="end date" />
+          <input type="text" class="date start" name="datestart" placeholder="start date" />
+          <input type="text" class="time start" name="timestart" placeholder="start time"/> to
+          <input type="text" class="time end" name="timeend" placeholder="end time" />
+          <input type="text" class="date end" name="dateend" placeholder="end date" />
         </p>
-        <button><a href="/event/eventid">Submit</a></button>
+        <button type="submit">Submit</button>
     </form> 
        
     </main> 
-
     <footer>
       <% include ./partials/_footer %>
     </footer>
