@@ -22,15 +22,17 @@
         <input id="location" type="text" name="location" placeholder="location"> <br>
         <label> Description: </label>
         <input id="description" type="text" name="description" placeholder="description"> <br>   
-        <p id="datepair">
-          <input type="text" class="date start" name="datestart" placeholder="start date" />
-          <input type="text" class="time start" name="timestart" placeholder="start time"/> to
-          <input type="text" class="time end" name="timeend" placeholder="end time" />
-          <input type="text" class="date end" name="dateend" placeholder="end date" />
-        </p>
+        <section class="timeslot-container">  
+          <p id="datepair">
+            <input type="text" class="date start" name="start_date" placeholder="start date" />
+            <input type="text" class="time start" name="start_time" placeholder="start time"/> to
+            <input type="text" class="time end" name="end_time" placeholder="end time" />
+            <input type="text" class="date end" name="end_date" placeholder="end date" />
+          </p>
+        </section>  
+        <button class="add-timeslot"><span><i class="fa fa-plus-circle"></i></span></button>
         <button type="submit">Submit</button>
-    </form> 
-       
+    </form>  
     </main> 
     <footer>
       <% include ./partials/_footer %>
