@@ -11,7 +11,7 @@ $(document).ready(function(){
 
   $('#datepair').datepair();
 
-  $('.add-timeslot').on('click', (function(e){
+  $('.add-timeslot').on('click', (e) => {
     e.preventDefault();
     let result = `
       <p class="appendDatePair">
@@ -37,13 +37,20 @@ $(document).ready(function(){
       });
 
       $('.appendDatePair').datepair();     
-  }))
+  })
 
     // Attach Button click event listener 
-  $('#submit-btn').on('click', (function(e){
+  $('#submit-btn').on('click', (e) => {
     e.preventDefault();
 
         // show Modal
         $('#myModal').modal('show');
-   }));
+   });
+
+   const eventURL = "retrieve from db";
+   $('#eventUrl').val(eventURL);
+   $('#copy-btn').on('click', (e) => {
+     $('#eventUrl').select();
+     document.execCommand("copy");
+   });
 });
