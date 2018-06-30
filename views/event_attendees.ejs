@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ./partials/_head %>
+  </head>
+  
+  <body>
+    <header>
+      <% include ./partials/_header %>
+    </header>
+
+<!-- Page-specific (main) content here -->
+      <main class="event-attendees-container">
+      </main> 
+      <table class="table">
+      <thead class="thead-dark" class="tableHeading" name="tableHeading">
+        <tr>
+          <th scope="col"><button class="addNewAttendee" name="addNewAttendee"><span><i class="fa fa-plus-circle"></i></span></button></th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+<!-- Timeslots appended from database/ initial hardcoded ones-->
+          <th  class="timeDateContainer" name="timeDateContainer" scope="col">
+            <span class="choosenTimeslot" name="choosenTimeslot">Date/Time1</span></th>
+           <th scope="col">Date/Time2</th>
+        </tr>
+      </thead>
+      <tbody>
+<!-- Create new attendee row -->
+         <tr class="typeNewAttendee" name="typeNewAttendee">
+          <th scope="row"></th>
+          <td><input type="text" class="form-control" class="typeName" name="typeName" placeholder="name"> 	</td>
+          <td> <input type="text" class="form-control" class="typeEmail" name="typeEmail" placeholder="email"> 	  </td>
+          <td><input type="checkbox"</td>
+          <td><input type="checkbox"</td>
+        </tr>
+<!-- Appended attendees rows + edit and delete options -->
+        <tr class="addedAttendeeContainer" name="addedAttendeeContainer">
+          <th scope="row" >
+            <button class="editAttendee" name="editAttendee"><span><i class="fa fa-pencil"></i></span></button>
+            <button class="deleteAttendee" name="deleteAttendee"><span><i class="fa fa-trash"></i></span></button>
+          </th>
+<!-- hard coded attendees -->
+          <td>Mark</td>
+          <td>Otto</td>
+          <td><input type="checkbox"></td>
+          <td><input type="checkbox"></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <button class="updateButton" name="updateButton"><span>Update</span></button>
+    <footer>
+      <% include ./partials/_footer %>
+    </footer>
+  </body>
+</html>
