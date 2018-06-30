@@ -1,22 +1,19 @@
 body {
-  background-color: #EEE;
-
-  h1 {
-    color: #244751;
-  }
-}
-
-body {
-  font-family: 'Roboto Condensed', sans-serif;
+  background-color: white;
+  font-family: 'Archivo black', sans-serif;
   margin: 0;
-  color: #244751;
-  background-color: #EEE;
+  color: lightgray;
+
+
+  // h1 {
+  //   color: #244751;
+  // }
 }
 
 .index-container {
   margin: auto;
-  width: 500px;
-  align-content: center;
-  background-color: white;
+  width: 600px;
+  text-align: center;
+  opacity: 0%;
   padding: 110px 10px;
 }
