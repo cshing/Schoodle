@@ -64,10 +64,6 @@ module.exports = (knex) => {
       .select('url')
       .from('events')
       .then((rows) => {
-        //console.log(rows.slice(-1)[0].url);
-        // console.log(rows);
-        // res.json(rows)
-        // console.log(res.status(304));
         return res.redirect(`/e/${rows.slice(-1)[0].url}`);
       })
       .catch(err => res.send("Error in events.js in routes:", err))

@@ -60,21 +60,20 @@ app.get('/e/:id', (req, res) => {
   
   //retrieve data from that url
   knex('events').where('url', req.params.id)
-  .select('id', 'title', 'description')
+  .select('id', 'title', 'description', 'location')
   .then((data) => {
     // console.log(data);
-    // console.log(data[0].title); 
+    console.log(data[0].title); 
     let templateVars = {
       title: data[0].title,
       description: data[0].description,
       location: data[0].location,
       eventUrl: req.params.id
     }
+    console.log(data);
     return res.render('event_attendees', templateVars);
   })
-  .catch((err) => {
-    console.log("error");
-  });
+  .catch(err => res.send("Error in server.js in routes:", err))
 })
 
 app.listen(PORT, () => {

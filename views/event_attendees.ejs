@@ -2,38 +2,44 @@
 <html lang="en">
   <head>
     <% include ./partials/_head %>
+    <% include ./partials/_header%>
     <script type="text/javascript" src="/scripts/event_results.js"></script> 
   </head>
   
   <body>
     <header>
-      <nav id="nav-bar">
-      <img class="logo" src="">
-      <span class="header">Schoodle</span>
-      </nav>
+     <!-- our own header with share event button toggle-->
     </header>
 
 <!-- Page-specific (main) content here -->
     <main class="event-page-container">
 
-      <!-- Share event link content here -->
-      <section class="share-event-container">
-        <button class="share-btn" name="share-btn"><span><i class="fa fa-share-square"></i> Share your event</span></button>
-        <input class="eventUrl" type="text" name="eventUrl" value="http://localhost:8080/e/<%= eventUrl%>" id="myInput">
-        <button id="copy-btn" type="button">Copy link</button>
+
+
+      <section class="event-info">
+        <h1> <%=title%> </h1>
+        <h4> <%=location%> </h4>
+        <h4> <%=description%> </h4>
       </section>
+      
+            <!-- Share event link content here -->
+            <section class="share-event-container">
+            <button class="share-btn" name="share-btn"><span><i class="fa fa-share-square"></i> Share your event</span></button>
+            <input class="eventUrl" type="text" name="eventUrl" value="http://localhost:8080/e/<%= eventUrl%>" id="myInput">
+            <button id="copy-btn" type="button">Copy link</button>
+          </section>
 
       <section class="event-results-container">
         <table class="table">
           <thead class="thead-dark" class="tableHeading" name="tableHeading">
             <tr>
               <th scope="col"><button class="addNewAttendee" name="addNewAttendee"><span><i class="fa fa-plus-circle"></i></span></button></th>
-              <th scope="col">Name</th>
+              <th scope="col"> Name </th>
               <th scope="col">Email</th>
     <!-- Timeslots appended from database/ initial hardcoded ones-->
-              <th  class="timeDateContainer" name="timeDateContainer" scope="col">
-                <span class="choosenTimeslot" name="choosenTimeslot">Date/Time1</span></th>
-              <th scope="col">Date/Time2</th>
+              <!-- <th  class="timeDateContainer" name="timeDateContainer" scope="col" ></th> -->
+                <th class="choosenTimeslot" name="choosenTimeslot" scope="col">Date/Time1</th>
+              <!-- <th scope="col">Date/Time2</th> -->
             </tr>
           </thead>
 
@@ -43,7 +49,6 @@
               <th scope="row"></th>
               <td><input type="text" class="form-control" class="typeName" name="typeName" placeholder="name"> 	</td>
               <td> <input type="text" class="form-control" class="typeEmail" name="typeEmail" placeholder="email"> 	  </td>
-              <td><input type="checkbox"</td>
               <td><input type="checkbox"</td>
             </tr>
     <!-- Appended attendees rows + edit and delete options -->
@@ -55,7 +60,6 @@
     <!-- hard coded attendees -->
               <td>Mark</td>
               <td>Otto</td>
-              <td><input type="checkbox"></td>
               <td><input type="checkbox"></td>
             </tr>
           </tbody>
