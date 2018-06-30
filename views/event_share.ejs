@@ -11,13 +11,21 @@
 
     <!-- Page-specific (main) content here -->
     <main class="event-share-container" name="event-share-container">
-    <p class="shareEventHeading" name="shareEventHeading"><h1>Share your event!</h1></p>
+      <p class="shareEventHeading" name="shareEventHeading"><h1>Share your event!</h1></p>
 
-      <form class="share-event"name="share-event" method="POST" action="/api/"> 
-        <input class="sharableLink" name="sharableLink" type="text" placeholder="&#xf1e0; http://localhost:8080/fhsw2346bm">
-        <button class="copyEventLink" name="copyEventLink" type="submit">Copy</button><br><br>
-        <button class="seeEvent" name="seeEvent" type="submit">See Event</button><br><br>
-        <button class="editEvent" name="editEvent" type="submit">Edit Event</button>
+      <form class="share-event" name="share-event" method="POST" action="/api/..."> 
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" class="sharableLink" name="sharableLink"placeholder="&#xf1e0;  http://localhost:8080/fhsw2346bm">
+          <div class="input-group-append" >
+            <button class="btn btn-outline-secondary" class="copyEventLink" name="copyEventLink" type="button">Copy</button>
+          </div>
+        </div>
+        <div > 
+          <button class="btn btn-outline-secondary" class="copyEventLink" name="copyEventLink" type="button">See Event</button> 
+        </div>
+        <div>
+          <button class="btn btn-outline-secondary" class="editEvent" name="editEvent" type="button">Edit Event</button>
+        </div>
       </form>
     </main> 
 
