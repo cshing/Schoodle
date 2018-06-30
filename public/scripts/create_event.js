@@ -40,17 +40,17 @@ $(document).ready(function(){
   })
 
     // Attach Button click event listener 
-  $('#submit-btn').on('click', (e) => {
-    e.preventDefault();
+  // $('#submit-btn').on('click', (e) => {
+  //   e.preventDefault();
 
-        // show Modal
-        $('#myModal').modal('show');
-   });
+  //       // show Modal
+  //       $('#myModal').modal('show');
+  //  });
 
-   const eventURL = "retrieve from db";
-   $('#eventUrl').val(eventURL);
-   $('#copy-btn').on('click', (e) => {
-     $('#eventUrl').select();
-     document.execCommand("copy");
-   });
+  //  const eventURL = "retrieve from db";
+  //  $('#eventUrl').val(eventURL);
+  //  $('#copy-btn').on('click', (e) => {
+  //    $('#eventUrl').select();
+  //    document.execCommand("copy");
+  //  });
 });
