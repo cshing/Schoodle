@@ -48,6 +48,34 @@ app.get("/new", (req, res) => {
   res.render("event_new")
 })
 
+// app.get("/eventpage", (req, res) => {
+//   console.log(req.params.id);
+//   res.render("event_page")
+// })
+
+//this is the correct route
+app.get('/e/:id', (req, res) => {
+  let templateVars = {};
+  
+  //retrieve data from that url
+  knex('events').where('url', req.params.id)
+  .select('id', 'title', 'description')
+  .then((data) => {
+    console.log(data);
+    console.log(data[0].title); 
+    let templateVars = {
+      title: data[0].title,
+      description: data[0].description,
+      location: data[0].location,
+    }
+    return res.render('event_page', templateVars);
+  })
+  .catch((err) => {
+    console.log("error");
+  });
+  // res.send("Error in server.js:", err)
+})
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
