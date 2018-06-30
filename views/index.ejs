@@ -8,17 +8,36 @@
     <script type="text/javascript" src="/scripts/app.js"></script> 
   </head>
 
-  <body>
+  <body class="bg" name="bg">
     <header>
     <% include ./partials/_header %>
     </header>
+    <div class="view hm-black-light jarallax" class="bg" name="bg" data-jarallax='{"speed": 0.2}'>
+      <main class="index-container"> 
+        <div class="full-bg-img">
+          <div class="container flex-center">
+              <div class="row pt-5 mt-3">
+                  <div class="col-md-12">
+                      <div class="text-center">
+                          <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-3 wow fadeInDown" data-wow-delay="0.3s"><strong>Welcome to Schoodle!</strong></h1>
+                          <hr class="hr-light mt-4 wow fadeInDown" data-wow-delay="0.4s">
+                          <h5 class="text-uppercase mb-5 white-text wow fadeInDown" data-wow-delay="0.4s">Intuitive Event Scheduling App</h5>
+                          <a a href="/new" input id="create-event" name="create-event" class="btn btn-danger wow fadeInDown" data-wow-delay="0.4s">Create Event</a>
+                          
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </main>
+    </div>
     <!-- Page-specific (main) content here -->
-    <main class="index-container">
+    <!--<main class="index-container">
         <section class="create-event">
           <h1> Welcome to schoodle! </h1>
-            <a href="/new" input id="create-event" class="btn btn-info" type="text" name="/login">CREATE EVENT!</a>
+            <a href="/new" input id="create-event" class="btn btn-danger" type="text" name="/login">CREATE EVENT!</a>
         </section>
-    </main> 
+    </main> -->
 
     <footer>
       <% include ./partials/_footer %>
