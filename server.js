@@ -56,17 +56,19 @@ app.get("/new", (req, res) => {
 //this is the correct route
 app.get('/e/:id', (req, res) => {
   let templateVars = {};
+  // let eventUrl = `http//localhost:8080/e/${req.params.id}`; 
   
   //retrieve data from that url
   knex('events').where('url', req.params.id)
   .select('id', 'title', 'description')
   .then((data) => {
-    console.log(data);
-    console.log(data[0].title); 
+    // console.log(data);
+    // console.log(data[0].title); 
     let templateVars = {
       title: data[0].title,
       description: data[0].description,
       location: data[0].location,
+      eventUrl: req.params.id
     }
     return res.render('event_attendees', templateVars);
   })
