@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <% include ./partials/_head %>
+    <script type="text/javascript" src="/scripts/event_results.js"></script> 
   </head>
   
   <body>
@@ -18,7 +19,7 @@
       <!-- Share event link content here -->
       <section class="share-event-container">
         <button class="share-btn" name="share-btn"><span><i class="fa fa-share-square"></i> Share your event</span></button>
-        <input class="eventUrl" type="text" name="eventUrl" value="http://localhost:8080/e/<%= %>" id="myInput">
+        <input class="eventUrl" type="text" name="eventUrl" value="http://localhost:8080/e/<%= eventUrl%>" id="myInput">
         <button id="copy-btn" type="button">Copy link</button>
       </section>
 
