@@ -68,12 +68,11 @@ app.get('/e/:id', (req, res) => {
       description: data[0].description,
       location: data[0].location,
     }
-    return res.render('event_page', templateVars);
+    return res.render('event_attendees', templateVars);
   })
   .catch((err) => {
     console.log("error");
   });
-  // res.send("Error in server.js:", err)
 })
 
 app.listen(PORT, () => {
