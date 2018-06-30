@@ -38,5 +38,12 @@ $(document).ready(function(){
 
       $('.appendDatePair').datepair();     
   }))
-});
 
+    // Attach Button click event listener 
+  $('#submit-btn').on('click', (function(e){
+    e.preventDefault();
+
+        // show Modal
+        $('#myModal').modal('show');
+   }));
+});
