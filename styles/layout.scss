@@ -1,19 +1,29 @@
+@import 'variables';
+@import 'nav';
+
 body {
   background-color: white;
-  font-family: 'Archivo black', sans-serif;
+  font-family: 'Karla', sans-serif;
   margin: 0;
-  color: lightgray;
+  color: white;
 
+  &.bg {
+    background: url("https://mdbootstrap.com/img/Photos/Others/img%20(42).jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
 
-  // h1 {
-  //   color: #244751;
-  // }
+  .index-container {
+    margin: auto;
+    width: 600px;
+    text-align: center;
+    opacity: 0%;
+    padding: 110px 10px;
+  }
+
 }
 
-.index-container {
-  margin: auto;
-  width: 600px;
-  text-align: center;
-  opacity: 0%;
-  padding: 110px 10px;
-}
+
+
