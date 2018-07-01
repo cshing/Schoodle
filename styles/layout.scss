@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'nav';
+@import 'event-info-container';
 
 body {
   background-color: white;
@@ -44,6 +45,10 @@ body {
     font-size: 1rem;
     margin: 160px;
     text-align: center;
+  }
+
+  .event-page-container{
+    padding: 30px;
   }
 
 }

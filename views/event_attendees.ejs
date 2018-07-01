@@ -13,20 +13,23 @@
 
 <!-- Page-specific (main) content here -->
     <main class="event-page-container">
-
-
-
       <section class="event-info-container">
-        <h4> <%=title%> </h4>
-        <h4> <%=creator_name%></h4>
-        <h4> <%=creator_email%></h4>
-        <h4> <%=location%> </h4>
-        <h4> <%=description%> </h4>
+        <h1 class="shareEventTitle" class="shareEventTitle"> <%=title%> </h1>
+        <h4><i class="fa fa-map-marker"></i><span class="eventInfo" name="eventInfo"> Where:</span> <%=location%> </h4>
+        <h5><span class="eventInfo" name="eventInfo"><i class="fa fa-users"></i> Event details: </span><%=description%></h5>
+       
 
         <div class="share-event-container">
-          <button class="share-btn" name="share-btn"><span><i class="fa fa-share-square"></i> Share your event</span></button>
-          <input class="eventUrl" type="text" name="eventUrl" value="http://localhost:8080/e/<%= eventUrl%>" id="myInput">
-          <button id="copy-btn" type="button">Copy link</button>
+      
+          
+          <h5 class="sharingDescription" name="sharingDescription"><i class="fa fa-share-square"></i> Share and invite more people!</h5>
+          <div class="input-group mb-3">
+            <input class="eventUrl" type="text" name="eventUrl" value=" http://localhost:8080/e/<%= eventUrl%>" id="myInput">
+            <div class="input-group-append" >
+            <button class="btn btn-outline-secondary" type="button">Copy link</button>
+          </div>
+
+          </div>
         </div>
       </section>
 
