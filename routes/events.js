@@ -43,7 +43,8 @@ module.exports = (knex) => {
       title: formData.title,
       description: formData.description,
       location: formData.location,
-      url: generateRandUrl()
+      url: generateRandUrl(),
+      creator_id: 1001
     })
     .returning('id')
     .then(function(response){

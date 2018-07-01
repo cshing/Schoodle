@@ -50,49 +50,48 @@ app.get("/new", (req, res) => {
 
 //this is the correct route
 app.get('/e/:id', (req, res) => {
-  let templateVars = {};
+  // let templateVars = {};
   // let eventUrl = `http//localhost:8080/e/${req.params.id}`; 
   
   //retrieve data from that urlF
   knex('events').where('url', req.params.id)
-  .select('id', 'title', 'description', 'location')
+  .select('id', 'title', 'description', 'location', 'creator_id')
   .then((data) => {
-    console.log('line60',data[0]);
+    // console.log('line60',data[0]);
     let templateVars = {
       id: data[0].id,
+      creator_name: "",
+      creator_email: "",
       title: data[0].title,
       description: data[0].description,
       location: data[0].location,
       eventUrl: req.params.id,
       timeslot: [],
-      // start_date: [],
-      // end_date: [],
-      // start_time: [],
-      // end_time: []
     }
+    knex('creators').where('id', data[0].creator_id)
+    .select('id', 'name', 'email')
+    .returning('*')
+    .then((data) => {
+        templateVars["creator_name"] = data[0].name,
+        templateVars["creator_email"] = data[0].email
+      })
+
     knex('timeslots').where('event_id', data[0].id)
     .select('id', 'start_date', 'end_date', 'start_time', 'end_time')
     .returning('id')
     .then((data) => {
       data.map(item => {
         templateVars["timeslot"].push(item)
-        // templateVars["end_date"].push(item.end_date),
-        // templateVars["start_time"].push(item.start_time),
-        // templateVars["end_time"].push(item.end_time)
       })
-        // templateVars["end_date"].push(item.end_date),
-        // templateVars["start_time"].push(item.start_time),
-        // templateVars["end_time"].push(item.end_time)
-     
-      console.log(templateVars);
-      return res.render('event_attendees', templateVars);
-    })
+        console.log(templateVars);
+        return res.render('event_attendees', templateVars);
+      })
     // console.log(templateVars);
     // return res.render('event_attendees', templateVars);
-  .catch(err => {
-    res.status(500).send("Error in server.js")
+    .catch(err => {
+      res.status(500).send("Error in server.js")
+    })
   })
-})
 })
 
 app.listen(PORT, () => {
