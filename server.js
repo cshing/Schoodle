@@ -64,39 +64,37 @@ app.get('/e/:id', (req, res) => {
       description: data[0].description,
       location: data[0].location,
       eventUrl: req.params.id,
-      start_date: [],
-      end_date: [],
-      start_time: [],
-      end_time: []
+      timeslot: [],
+      // start_date: [],
+      // end_date: [],
+      // start_time: [],
+      // end_time: []
     }
     knex('timeslots').where('event_id', data[0].id)
     .select('id', 'start_date', 'end_date', 'start_time', 'end_time')
     .returning('id')
     .then((data) => {
       data.map(item => {
-        templateVars["start_date"].push(item.start_date),
-        templateVars["end_date"].push(item.end_date),
-        templateVars["start_time"].push(item.start_time),
-        templateVars["end_time"].push(item.end_time)
+        templateVars["timeslot"].push(item)
+        // templateVars["end_date"].push(item.end_date),
+        // templateVars["start_time"].push(item.start_time),
+        // templateVars["end_time"].push(item.end_time)
       })
-      // for (var i = 0; i < data.length; i++){
-      //   templateVars.start_date = data[i].start_date,
-      //   templateVars.end_date = data[i].end_date,
-      //   templateVars.start_time = data[i].start_time,
-      //   templateVars.end_time = data[i].end_time
-      // }
+        // templateVars["end_date"].push(item.end_date),
+        // templateVars["start_time"].push(item.start_time),
+        // templateVars["end_time"].push(item.end_time)
+     
       console.log(templateVars);
-      
       return res.render('event_attendees', templateVars);
     })
     // console.log(templateVars);
     // return res.render('event_attendees', templateVars);
-  })
   .catch(err => {
     res.status(500).send("Error in server.js")
   })
 })
+})
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
-});
+})

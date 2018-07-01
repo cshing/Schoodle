@@ -20,8 +20,10 @@
         <h1> <%=title%> </h1>
         <h4> <%=location%> </h4>
         <h4> <%=description%> </h4>
+        
+       
       </section>
-      
+
             <!-- Share event link content here -->
             <section class="share-event-container">
             <button class="share-btn" name="share-btn"><span><i class="fa fa-share-square"></i> Share your event</span></button>
@@ -38,7 +40,8 @@
               <th scope="col">Email</th>
     <!-- Timeslots appended from database/ initial hardcoded ones-->
               <!-- <th  class="timeDateContainer" name="timeDateContainer" scope="col" ></th> -->
-                <th class="choosenTimeslot" name="choosenTimeslot" scope="col">Date/Time1</th>
+              
+                <th class="choosenTimeslot" name="choosenTimeslot" scope="col"> <% moment(timeslot[0].start_date).format("YYYY-MM-DD")%><br><%= timeslot[0].start_time %> to <%= timeslot[0].end_time %> </th>
               <!-- <th scope="col">Date/Time2</th> -->
             </tr>
           </thead>
