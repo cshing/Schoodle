@@ -17,9 +17,9 @@
 
 
       <section class="event-info-container">
-        <h4> <%=creator_name%> </h4>
-        <h4> <%=creator_email%> </h4>
         <h4> <%=title%> </h4>
+        <h4> <%=creator_name%></h4>
+        <h4> <%=creator_email%></h4>
         <h4> <%=location%> </h4>
         <h4> <%=description%> </h4>
 
@@ -55,40 +55,30 @@
             </tr>
           </thead>
 
-    <!-- Create new attendee row -->
+          
+<!-- Append attendees rows + edit and delete options -->
           <tbody>
-            <tr class="typeNewAttendee" name="typeNewAttendee">
-              <th scope="row"></th>
-              <td><input type="text" class="form-control" class="typeName" name="typeName" placeholder="name"> 	</td>
-              <td> <input type="text" class="form-control" class="typeEmail" name="typeEmail" placeholder="email"> </td>
-              
-              
-              <% for (let i = 0; i < timeslot.length; i++) { %>
-              <td class="append-attendee-checkbox"><input type="checkbox"></td>
-              <% } %>
-
-            </tr>
-    
-    <!-- Appended attendees rows + edit and delete options -->
-            <tr class="addedAttendeeContainer" name="addedAttendeeContainer">
+            <tr class="attendee-row" name="attendee-row">
               <th scope="row" >
                 <button class="editAttendee" name="editAttendee"><span><i class="fa fa-pencil"></i></span></button>
                 <button class="deleteAttendee" name="deleteAttendee"><span><i class="fa fa-trash"></i></span></button>
               </th>
-    <!-- existing attendees from db / currently hard coded -->
-              <td>Mark</td>
-              <td>Otto</td>
 
-              <% for (let i = 0; i < timeslot.length; i++) { %>
-              <td class="existing-attendee-checkbox"><input type="checkbox"></td>
-              <% } %>
+              <form action="/api/attendees/" method="POST" id="attendee-input">
+                <td><input type="text" class="form-control" class="typeName" name="typeName" placeholder="name"> </td>
+                <td><input type="text" class="form-control" class="typeEmail" name="typeEmail" placeholder="email"> </td>
+
+                <% for (let i = 0; i < timeslot.length; i++) { %>
+                <td><input type="checkbox" class="checkbox-input" name="checkbox-input" value="checkbox-input"></td>
+                <% } %>
 
             </tr>
           </tbody>
         </table>
 
         <br>
-        <button class="updateButton" name="updateButton"><span>Update</span></button>
+        <input type="submit" class="result-submitButton" name="result-submitButton" value="submit"> 
+        </form>
       </section>
     </main> 
 

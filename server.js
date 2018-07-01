@@ -57,7 +57,6 @@ app.get('/e/:id', (req, res) => {
   knex('events').where('url', req.params.id)
   .select('id', 'title', 'description', 'location', 'creator_id')
   .then((data) => {
-    // console.log('line60',data[0]);
     let templateVars = {
       id: data[0].id,
       creator_name: "",
@@ -75,19 +74,16 @@ app.get('/e/:id', (req, res) => {
         templateVars["creator_name"] = data[0].name,
         templateVars["creator_email"] = data[0].email
       })
-
-    knex('timeslots').where('event_id', data[0].id)
-    .select('id', 'start_date', 'end_date', 'start_time', 'end_time')
-    .returning('id')
-    .then((data) => {
-      data.map(item => {
-        templateVars["timeslot"].push(item)
-      })
+      knex('timeslots').where('event_id', data[0].id)
+      .select('id', 'start_date', 'end_date', 'start_time', 'end_time')
+      .returning('id')
+      .then((data) => {
+        data.map(item => {
+          templateVars["timeslot"].push(item)
+        })
         console.log(templateVars);
         return res.render('event_attendees', templateVars);
       })
-    // console.log(templateVars);
-    // return res.render('event_attendees', templateVars);
     .catch(err => {
       res.status(500).send("Error in server.js")
     })
