@@ -11,7 +11,7 @@ $(document).ready(function(){
 
   $('#datepair').datepair();
 
-  $('.add-timeslot').on('click', (e) => {
+  $('#add-timeslot').on('click', (e) => {
     e.preventDefault();
     let result = `
       <p class="appendDatePair">
@@ -24,7 +24,7 @@ $(document).ready(function(){
 
       var counter = $('.Counter').html();
       counter++ ;
-      $('.Counter').html(counter);
+      $('.Counter').html(`${counter}`);
 
       $('.appendDatePair .time').timepicker({
         'showDuration': true,
@@ -36,7 +36,7 @@ $(document).ready(function(){
         'autoclose': true
       });
 
-      $('.appendDatePair').datepair();     
+      $('.appendDatePair').datepair();
   })
 
     // Attach Button click event listener 
