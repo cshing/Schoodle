@@ -40,9 +40,15 @@
               <th scope="col">Email</th>
     <!-- Timeslots appended from database/ initial hardcoded ones-->
               <!-- <th  class="timeDateContainer" name="timeDateContainer" scope="col" ></th> -->
-              
-                <th class="choosenTimeslot" name="choosenTimeslot" scope="col"> <% moment(timeslot[0].start_date).format("YYYY-MM-DD")%><br><%= timeslot[0].start_time %> to <%= timeslot[0].end_time %> </th>
-              <!-- <th scope="col">Date/Time2</th> -->
+              <th class="choosenTimeslot" name="choosenTimeslot" scope="col"> 
+              <% for (let i = 0; i < timeslot.length; i++) { %>
+              <th>
+                 <% let trimmedTime = timeslot[i].start_date %>
+                 <% let stringtime= trimmedTime.toString() %>
+                 <th class="dategiven" name="dategiven"> <%= stringtime.substring(0,10) %> </th>
+                 </th>
+              <% } %>
+                <br><%= timeslot[0].start_time %> to <%= timeslot[0].end_time %> </th>
             </tr>
           </thead>
 
@@ -51,9 +57,10 @@
             <tr class="typeNewAttendee" name="typeNewAttendee">
               <th scope="row"></th>
               <td><input type="text" class="form-control" class="typeName" name="typeName" placeholder="name"> 	</td>
-              <td> <input type="text" class="form-control" class="typeEmail" name="typeEmail" placeholder="email"> 	  </td>
+              <td> <input type="text" class="form-control" class="typeEmail" name="typeEmail" placeholder="email"> </td>
               <td><input type="checkbox"</td>
             </tr>
+    
     <!-- Appended attendees rows + edit and delete options -->
             <tr class="addedAttendeeContainer" name="addedAttendeeContainer">
               <th scope="row" >
