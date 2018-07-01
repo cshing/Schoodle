@@ -16,20 +16,20 @@
 
 
 
-      <section class="event-info">
-        <h1> <%=title%> </h1>
+      <section class="event-info-container">
+        <h4> <%=title%> </h4>
         <h4> <%=location%> </h4>
         <h4> <%=description%> </h4>
-        
-       
+
+        <div class="share-event-container">
+          <button class="share-btn" name="share-btn"><span><i class="fa fa-share-square"></i> Share your event</span></button>
+          <input class="eventUrl" type="text" name="eventUrl" value="http://localhost:8080/e/<%= eventUrl%>" id="myInput">
+          <button id="copy-btn" type="button">Copy link</button>
+        </div>
       </section>
 
-            <!-- Share event link content here -->
-            <section class="share-event-container">
-            <button class="share-btn" name="share-btn"><span><i class="fa fa-share-square"></i> Share your event</span></button>
-            <input class="eventUrl" type="text" name="eventUrl" value="http://localhost:8080/e/<%= eventUrl%>" id="myInput">
-            <button id="copy-btn" type="button">Copy link</button>
-          </section>
+        <!-- Share event link content here -->
+
 
       <section class="event-results-container">
         <table class="table">
@@ -53,8 +53,8 @@
             </tr>
           </thead>
 
-          <tbody>
     <!-- Create new attendee row -->
+          <tbody>
             <tr class="typeNewAttendee" name="typeNewAttendee">
               <th scope="row"></th>
               <td><input type="text" class="form-control" class="typeName" name="typeName" placeholder="name"> 	</td>
