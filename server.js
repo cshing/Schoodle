@@ -17,6 +17,7 @@ const knexLogger  = require('knex-logger');
 // Seperated Routes for each Resource
 const creatorsRoutes = require("./routes/creators");
 const eventsRoutes = require("./routes/events");
+const resultRoutes = require("./routes/result-attendee-avail");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -39,6 +40,7 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/creators", creatorsRoutes(knex));
 app.use("/api/events", eventsRoutes(knex));
+app.use("/api/result", resultRoutes(knex));
 
 app.get("/", (req, res) => {
   res.render("index")
@@ -81,7 +83,7 @@ app.get('/e/:id', (req, res) => {
         data.map(item => {
           templateVars["timeslot"].push(item)
         })
-        console.log(templateVars);
+        // console.log(templateVars);
         return res.render('event_attendees', templateVars);
       })
     .catch(err => {
