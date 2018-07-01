@@ -18,9 +18,32 @@ body {
   .index-container {
     margin: auto;
     width: 600px;
-    text-align: center;
+    text-align: left;
     opacity: 0%;
     padding: 110px 10px;
+  }
+
+  .new-event-container {
+    margin: auto;
+    width: 800px;
+    text-align: left;
+    padding: 110px 10px;
+  }
+
+  .text-center {
+    padding-bottom: 20px;
+  }
+
+  .create-event{
+    text-align: center;
+  }
+  .extraIimeSlots{
+    font-size: x-large;
+  }
+  .footer {
+    font-size: 1rem;
+    margin: 160px;
+    text-align: center;
   }
 
 }

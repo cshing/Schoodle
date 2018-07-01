@@ -13,27 +13,33 @@
       <% include ./partials/_header %>
     </header>
     <!-- Page-specific (main) content here -->
-    <main class="new-event-container">
-    <p>create event</p>
-    <form class="create-event" method="POST" action="/api/events/"> 
-        <label> Event name: </label> 
-        <input id="title" type="text" name="title" placeholder="event title"/> <br>
-        <label> Location: </label> 
-        <input id="location" type="text" name="location" placeholder="location"> <br>
-        <label> Description: </label>
-        <input id="description" type="text" name="description" placeholder="description"> <br>   
-        <section class="timeslot-container">  
+    <main class="new-event-container" name="new-event-container">
+      <div class="text-center">
+      <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-3 wow fadeInDown" data-wow-delay="0.3s"><strong>Create Event</strong></h1>
+      </div>
+      <form class="create-event" method="POST" action="/api/events/">
+      
+      <i class="fa fa-users"></i> <label><h4> What's the ocassion? </h4></label><br>
+        <input id="title" type="text" name="title" placeholder=" Enter title"/><br><br>
+      
+        <i class="fa fa-map-marker"></i> <label><h4> Where would you like to meet? </h4></label><br>
+         <input id="location" type="text" name="location" placeholder=" Add location"><br><br>
+      
+         <i class="fa fa-comment"></i> <label><h4> Tell a little bit more about this ocasion </h4></label><br>
+         <input id="description" type="text" name="description" placeholder=" Add note"><br><br>
+
+         <i class="fa fa-calendar"></i> <label><h4> What are the date and time options?</h4></label><br>
+        <section class="timeslot-container">
           <p id="datepair">
-            <input type="text" class="date start" name="start_date" placeholder="start date" />
-            <input type="text" class="time start" name="start_time" placeholder="start time"/> to
-            <input type="text" class="time end" name="end_time" placeholder="end time" />
-            <input type="text" class="date end" name="end_date" placeholder="end date" />
+            <input type="text" class="date start" name="start_date" placeholder=" Start Date" />
+            <input type="text" class="time start" name="start_time" placeholder=" Start Time"/> to 
+            <input type="text" class="time end" name="end_time" placeholder=" End Time" />
+            <input type="text" class="date end" name="end_date" placeholder=" End Date" /> 
           </p>
-        </section>  
-        <p type="text" name="Counter" class="Counter" > 1 </p>
-        <button class="add-timeslot"><span><i class="fa fa-plus-circle"></i></span></button>
-        <button id="submit-btn" class="btn btn-primary btn-lg">Submit</button>
-    </form>
+        </section>
+     <section class="extraIimeSlots">Add extra time slots <button id="add-timeslot" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i></button></section><br>
+       <button id="submit-btn" class="btn btn-danger wow fadeInDown">Invite participants and edit invitation list</button>
+      </form>
     </main> 
     <footer>
       <% include ./partials/_footer %>
