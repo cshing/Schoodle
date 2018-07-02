@@ -40,9 +40,11 @@
         <table class="table">
           <thead class="thead-dark" class="tableHeading" name="tableHeading">
             <tr>
-              <th scope="col"><button class="addNewAttendee" name="addNewAttendee"><span><i class="fa fa-plus-circle"></i></span></button></th>
-              <th scope="col"> Name </th>
-              <th scope="col">Email</th>
+              <th scope="col"><button id="addNewAttendee" name="addNewAttendee" class="btn btn-danger btn-xs"><span><i class="fa fa-plus-circle"></i></span></button></th>
+              
+              <th  scope="col"><h3 class="nameEmail" name="nameEmail">Name</h3></th>
+              <th  scope="col"><h3 class="nameEmail" name="nameEmail">Email</h3></th>
+              
 
     <!-- Timeslots from database-->
               <!-- <th  class="timeDateContainer" name="timeDateContainer" scope="col" ></th> -->
@@ -57,14 +59,13 @@
 
             </tr>
           </thead>
-
-          
+ 
+         
 <!-- Append attendees rows + edit and delete options -->
           <tbody class="results-container">
             <tr class="attendee-row" name="attendee-row">
               <th scope="row" >
-                <button class="editAttendee" name="editAttendee"><span><i class="fa fa-pencil"></i></span></button>
-                <button class="deleteAttendee" name="deleteAttendee"><span><i class="fa fa-trash"></i></span></button>
+                <a href=""><span id="editAttendee" name="editAttendee"><h4><i class="fa fa-pencil"></i></h4></span></a>
               </th>
 
               <form action="/e/<%=eventUrl%>" method="POST" id="attendee-input">
@@ -74,13 +75,15 @@
                 <% for (let i = 0; i < timeslot.length; i++) { %>
                 <td><input type="checkbox" class="checkbox-input <%=i%>" name="checkbox-input" value="checkboxInput-<%=i%>"></td>
                 <% } %>
-
             </tr>
           </tbody>
         </table>
 
         <br>
-        <input type="submit" class="result-submitButton" name="result-submitButton" value="submit"> 
+        <section class="submitButtonContainer" name="submitButtonContainer">
+          <button id="submit-btn" class="btn btn-danger wow fadeInDown">Update Attendees List</button>
+        </section>
+
         </form>
       </section>
     </main> 
