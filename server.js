@@ -17,6 +17,7 @@ const knexLogger  = require('knex-logger');
 // Seperated Routes for each Resource
 const creatorsRoutes = require("./routes/creators");
 const eventsRoutes = require("./routes/events");
+const resultRoutes = require("./routes/result-attendee-avail");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -39,6 +40,7 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/creators", creatorsRoutes(knex));
 app.use("/api/events", eventsRoutes(knex));
+// app.use("/api/result", resultRoutes(knex));
 
 app.get("/", (req, res) => {
   res.render("index")
@@ -81,13 +83,45 @@ app.get('/e/:id', (req, res) => {
         data.map(item => {
           templateVars["timeslot"].push(item)
         })
-        console.log(templateVars);
+        // console.log(templateVars);
         return res.render('event_attendees', templateVars);
       })
     .catch(err => {
       res.status(500).send("Error in server.js")
     })
   })
+})
+
+app.post('/e/:id', (req, res) => {
+  let formData = req.body;
+  // console.log(formData);
+  // console.log(req.params.id);
+  knex('events').where('url', req.params.id)
+    .select('id')
+    // .returning('id')
+    .then((data) => {
+      knex('attendees')
+      .insert({
+        name: formData["typeName"],
+        email: formData["typeEmail"],
+        event_id: data[0].id
+      })
+      .returning('*')
+      .then((data) =>{
+        console.log("*data:", data);
+        knex('availabilities')
+        .insert({
+          attendee_id: data[0].id,
+          // timeslot_id: sth
+        })
+        .returning('*')
+        .then((data) => {
+          console.log(data);
+          res.send('ok')
+        })
+      })    
+    })
+    .catch(err => res.send("Error in server.js in routes:", err)) 
 })
 
 app.listen(PORT, () => {
