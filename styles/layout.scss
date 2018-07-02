@@ -15,6 +15,11 @@ body {
     background-size: cover;
   }
 
+  .h1-reponsive.white-text{
+    font-weight: bold;
+  }
+
+
   .index-container {
     margin: auto;
     width: 600px;
@@ -30,8 +35,47 @@ body {
     padding: 110px 10px;
   }
 
-  .text-center {
-    padding-bottom: 20px;
+  #title {
+    border-radius: 4px;
+    border: solid 0.5px;
+    border-color: white;
+  }
+
+  #location {
+    border-radius: 4px;
+    border: solid 0.5px;
+    border-color: white;
+  }
+
+  #description {
+    border-radius: 4px;
+    border: solid 0.5px;
+    border-color: white;
+  }
+
+  .date.start {
+    border-radius: 4px;
+    border: solid 0.5px;
+    border-color: white;
+  }
+
+  .date.end {
+    border-radius: 4px;
+    border: solid 0.5px;
+    border-color: white;
+  }
+
+
+  .time.start {
+    border-radius: 4px;
+    border: solid 0.5px;
+    border-color: white;
+  }
+
+  .time.end {
+    border-radius: 4px;
+    border: solid 0.5px;
+    border-color: white;
   }
 
   .create-event{
