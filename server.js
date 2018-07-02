@@ -93,6 +93,7 @@ app.get('/e/:id', (req, res) => {
 })
 
 app.post('/e/:id', (req, res) => {
+  console.log(req.body);
   let formData = req.body; 
   let checkboxID;
   let checkboxIDs = [];
@@ -109,15 +110,17 @@ app.post('/e/:id', (req, res) => {
     }
     else {
       checkboxID = Number(formData["checkbox-input"].slice(-1));
-      console.log(checkboxID);
+      // console.log(checkboxID);
       return false;
     }
   }
+  
    if (verifyCheckboxArray() == false){
     timeslotID = templateVars.timeslot[checkboxID].id
-    console.log(timeslotID);
+    // console.log(timeslotID);
   }
   else {
+    console.log("116", checkboxIDs);
     for (let checkbox in checkboxIDs) {
         timeslotIDs.push(templateVars.timeslot[checkbox].id)
     }
@@ -144,7 +147,11 @@ app.post('/e/:id', (req, res) => {
       .then((data) =>{
         console.log("*data:", data);
         console.log(data[0].id);
-        let attendeeID = data[0].id;
+        templateVars = {
+          attendee_name: data[0].name,
+          attendee_email: data[0].email
+        }
+        console.log(templateVars);
         if (checkTimeslotArr() == false){
           knex('availabilities')
           .insert({
