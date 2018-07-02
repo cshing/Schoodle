@@ -1,9 +1,9 @@
 .event-info-container {
   margin: 100px 110px 30px;
-  padding: 10px 0px 10px;
+  padding: 10px 30px 10px;
   text-align: center;
   background-color: white;
-  color: darkgrey;
+  color: grey;
   border-radius: 5px;
 
 }
@@ -12,7 +12,7 @@
   font-weight: 700;
   color: grey;
   border-bottom: solid;
-  margin: 30px;
+  margin: 40px;
   border-color: lightgrey;
 
 }
@@ -22,16 +22,18 @@
 }
 
 .sharingDescription {
- margin-top: 25px;
+  margin-top: 30px;
 }
 
 
-
-.input-group {
-  margin: 10px 90px 10px 75px;
+.event-info-container .input-group {
+  display: flex;
+  justify-content: center;
 }
+
+
 .eventUrl {
-  width: 55%;
+  width: 23%;
   border: 1px solid #ced4da;
   border-bottom-left-radius: .25rem;
   border-top-left-radius: .25rem;;
@@ -39,5 +41,6 @@
 
 .btn-outline-secondary {
   background-color: #db3846;
+  border-color: #db3846;
   color: white;
 }
