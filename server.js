@@ -154,7 +154,7 @@ app.post('/e/:id', (req, res) => {
           .returning('*')
           .then((data) => {
             console.log(data);
-            res.status(200).send('ok')
+            res.render('event_attendees', templateVars)
           })
           .catch(err => res.send("Error in server.js in routes:", err)) 
         }
@@ -169,7 +169,7 @@ app.post('/e/:id', (req, res) => {
             .returning('*')
             .then((data) => {
               console.log(data);
-              res.status(200).send('ok')
+              res.render('event_attendees', templateVars)
             })
             .catch(err => res.send("Error in server.js in routes:", err)) 
             .then(() => {
@@ -182,7 +182,7 @@ app.post('/e/:id', (req, res) => {
               .returning('*')
               .then((data) => {
                 console.log(data);
-                res.status(200).send('ok')
+                res.render('event_attendees', templateVars)
               })
               .catch(err => res.send("Error in server.js in routes:", err)) 
           })
