@@ -60,7 +60,7 @@
 
           
 <!-- Append attendees rows + edit and delete options -->
-          <tbody>
+          <tbody class="results-container">
             <tr class="attendee-row" name="attendee-row">
               <th scope="row" >
                 <button class="editAttendee" name="editAttendee"><span><i class="fa fa-pencil"></i></span></button>
@@ -72,7 +72,7 @@
                 <td><input type="text" class="form-control" class="typeEmail" name="typeEmail" placeholder="email"> </td>
 
                 <% for (let i = 0; i < timeslot.length; i++) { %>
-                <td><input type="checkbox" class="checkbox-input" name="checkbox-input" value="checkbox-input"></td>
+                <td><input type="checkbox" class="checkbox-input <%=i%>" name="checkbox-input" value="checkboxInput-<%=i%>"></td>
                 <% } %>
 
             </tr>

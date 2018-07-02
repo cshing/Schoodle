@@ -8,6 +8,7 @@ module.exports = (knex) => {
   router.post("/", (req, res) => {
     let formData = req.body;
     let timeSlots = [];
+    
 
      // compileStartAndEndDates
      formData.start_date.map((date, index) => {

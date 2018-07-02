@@ -18,7 +18,7 @@ const knexLogger  = require('knex-logger');
 const creatorsRoutes = require("./routes/creators");
 const eventsRoutes = require("./routes/events");
 const resultRoutes = require("./routes/result-attendee-avail");
-
+var templateVars = {};
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -59,7 +59,7 @@ app.get('/e/:id', (req, res) => {
   knex('events').where('url', req.params.id)
   .select('id', 'title', 'description', 'location', 'creator_id')
   .then((data) => {
-    let templateVars = {
+     templateVars = {
       id: data[0].id,
       creator_name: "",
       creator_email: "",
@@ -93,9 +93,43 @@ app.get('/e/:id', (req, res) => {
 })
 
 app.post('/e/:id', (req, res) => {
-  let formData = req.body;
-  // console.log(formData);
-  // console.log(req.params.id);
+  let formData = req.body; 
+  let checkboxID;
+  let checkboxIDs = [];
+  let timeslotID;
+  let timeslotIDs = [];
+
+  //templateVars is an obj
+  function verifyCheckboxArray(){
+    if (Array.isArray(formData["checkbox-input"])){
+      formData["checkbox-input"].forEach(checkbox => {
+        checkboxIDs.push(Number(checkbox.substr(checkbox.length - 1)))
+      })
+      return true;
+    }
+    else {
+      checkboxID = Number(formData["checkbox-input"].slice(-1));
+      console.log(checkboxID);
+      return false;
+    }
+  }
+   if (verifyCheckboxArray() == false){
+    timeslotID = templateVars.timeslot[checkboxID].id
+    console.log(timeslotID);
+  }
+  else {
+    for (let checkbox in checkboxIDs) {
+        timeslotIDs.push(templateVars.timeslot[checkbox].id)
+    }
+  }
+
+  function checkTimeslotArr(){
+    if (timeslotIDs.length === 0){
+      return false;
+    }
+    return true;
+  }
+
   knex('events').where('url', req.params.id)
     .select('id')
     // .returning('id')
@@ -109,19 +143,53 @@ app.post('/e/:id', (req, res) => {
       .returning('*')
       .then((data) =>{
         console.log("*data:", data);
-        knex('availabilities')
-        .insert({
-          attendee_id: data[0].id,
-          // timeslot_id: sth
-        })
-        .returning('*')
-        .then((data) => {
-          console.log(data);
-          res.send('ok')
-        })
-      })    
-    })
-    .catch(err => res.send("Error in server.js in routes:", err)) 
+        console.log(data[0].id);
+        let attendeeID = data[0].id;
+        if (checkTimeslotArr() == false){
+          knex('availabilities')
+          .insert({
+            attendee_id: attendeeID,
+            timeslot_id: timeslotID
+          })
+          .returning('*')
+          .then((data) => {
+            console.log(data);
+            res.status(200).send('ok')
+          })
+          .catch(err => res.send("Error in server.js in routes:", err)) 
+        }
+        else {
+          let timeslotId = timeslotIDs[0]
+          // for (let timeslotId in timeslotIDs){
+            knex('availabilities')
+            .insert({
+              attendee_id: attendeeID,
+              timeslot_id: timeslotId
+            })
+            .returning('*')
+            .then((data) => {
+              console.log(data);
+              res.status(200).send('ok')
+            })
+            .catch(err => res.send("Error in server.js in routes:", err)) 
+            .then(() => {
+              let timeslotId = timeslotIDs[1];
+              knex('availabilities')
+              .insert({
+                attendee_id: attendeeID,
+                timeslot_id: timeslotId
+              })
+              .returning('*')
+              .then((data) => {
+                console.log(data);
+                res.status(200).send('ok')
+              })
+              .catch(err => res.send("Error in server.js in routes:", err)) 
+          })
+        }
+      })
+      .catch(err => res.send("Error in server.js in routes:", err)) 
+      })
 })
 
 app.listen(PORT, () => {
