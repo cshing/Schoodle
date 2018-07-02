@@ -40,7 +40,7 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/creators", creatorsRoutes(knex));
 app.use("/api/events", eventsRoutes(knex));
-app.use("/api/result", resultRoutes(knex));
+// app.use("/api/result", resultRoutes(knex));
 
 app.get("/", (req, res) => {
   res.render("index")
@@ -90,6 +90,38 @@ app.get('/e/:id', (req, res) => {
       res.status(500).send("Error in server.js")
     })
   })
+})
+
+app.post('/e/:id', (req, res) => {
+  let formData = req.body;
+  // console.log(formData);
+  // console.log(req.params.id);
+  knex('events').where('url', req.params.id)
+    .select('id')
+    // .returning('id')
+    .then((data) => {
+      knex('attendees')
+      .insert({
+        name: formData["typeName"],
+        email: formData["typeEmail"],
+        event_id: data[0].id
+      })
+      .returning('*')
+      .then((data) =>{
+        console.log("*data:", data);
+        knex('availabilities')
+        .insert({
+          attendee_id: data[0].id,
+          // timeslot_id: sth
+        })
+        .returning('*')
+        .then((data) => {
+          console.log(data);
+          res.send('ok')
+        })
+      })    
+    })
+    .catch(err => res.send("Error in server.js in routes:", err)) 
 })
 
 app.listen(PORT, () => {
